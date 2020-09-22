@@ -1,0 +1,21 @@
+#root {
+  padding: 50px;
+  background-color: #EEE;
+}
+
+#root h1 {
+  font-size: 30px;
+  font-family: sans-serif;
+  color: #0080a8;
+}
+
+.letter {
+  padding: 10px;
+  margin: 10px;
+  background-color: #ffde00;
+  color: #333;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 32px;
+  text-align: center;
+}
