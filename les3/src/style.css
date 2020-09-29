@@ -30,7 +30,7 @@ ul.header li a {
     display: inline-block;
 }
 
-ul.header li:first-child a{
+ul.header li:first-child a {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -85,7 +85,7 @@ ul.header li:first-child a{
 
 .todoListMain .theList li {
     color: #333;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255, 255, 255, .5);
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;

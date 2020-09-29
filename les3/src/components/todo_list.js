@@ -1,72 +1,72 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 import InputForm from "./input_form";
 import TodoItems from "./todo_items";
 
 class TodoList extends Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    var items = [];
+        var items = [];
 
-    if (localStorage.todoitems) {
-      items = JSON.parse(localStorage.todoitems);
+        if (localStorage.todoitems) {
+            items = JSON.parse(localStorage.todoitems);
+        }
+
+        this.state = {
+            items,
+        };
+
+        this.addItem = this.addItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
-    this.state = {
-      items,
-    };
+    addItem(item) {
+        var items = this.state.items;
 
-    this.addItem = this.addItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-  }
+        var today = new Date();
+        var shortDate =
+            today.getDate() +
+            "/" +
+            (today.getMonth() + 1) +
+            "/" +
+            today.getFullYear();
 
-  addItem(item) {
-    var items = this.state.items;
+        items.push({
+            text: item,
+            date: shortDate,
+            key: Date.now(),
+        });
 
-    var today = new Date();
-    var shortDate =
-      today.getDate() +
-      "/" +
-      (today.getMonth() + 1) +
-      "/" +
-      today.getFullYear();
+        this.setState({
+            items,
+        });
+        localStorage.todoitems = JSON.stringify(items);
+    }
 
-    items.push({
-      text: item,
-      date: shortDate,
-      key: Date.now(),
-    });
+    deleteItem(item) {
+        var items = this.state.items;
 
-    this.setState({
-      items,
-    });
-    localStorage.todoitems = JSON.stringify(items);
-  }
+        var i = items.findIndex((element, i) => element.key === item.key);
+        items.splice(i, 1);
 
-  deleteItem(item) {
-    var items = this.state.items;
+        this.setState({
+            items,
+        });
+        localStorage.todoitems = JSON.stringify(items);
+    }
 
-    var i = items.findIndex((element, i) => element.key === item.key);
-    items.splice(i, 1);
-
-    this.setState({
-      items,
-    });
-    localStorage.todoitems = JSON.stringify(items);
-  }
-
-  render() {
-    return (
-      <div className="todoListMain">
-        <InputForm onSubmitHandler={this.addItem} />
-        <TodoItems
-          entries={this.state.items}
-          onClickItemHandler={this.deleteItem}
-        />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="todoListMain">
+                <InputForm onSubmitHandler={this.addItem}/>
+                <TodoItems
+                    entries={this.state.items}
+                    onClickItemHandler={this.deleteItem}
+                />
+            </div>
+        );
+    }
 }
 
 export default TodoList;
