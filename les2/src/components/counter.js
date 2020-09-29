@@ -26,8 +26,8 @@ const Button = (props) => {
 
 
 class Counter extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.onButtonClick = this.onButtonClick.bind(this);
 

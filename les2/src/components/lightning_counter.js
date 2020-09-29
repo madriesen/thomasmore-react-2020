@@ -11,8 +11,8 @@ const Label = (props) => {
 }
 
 class LightningCounter extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         // state ALLEEN aanpassen in constructor
         this.state = { strikes: 0 };

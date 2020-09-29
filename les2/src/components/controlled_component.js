@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 class ControlledComponent extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = { text: "Some default value" };
 
